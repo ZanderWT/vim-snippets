@@ -1,0 +1,72 @@
+#custom snippets for java
+
+global !p
+
+def camelBack(word):
+	return word[0].lower() + word[1:]
+def firstLetterUpper(word):
+	return word[0].upper() + word[1:]
+
+endglobal
+
+snippet // "comment line."
+//zthompso `!v strftime("%m/%d/%Y")` ${1:bugnum?}: ${2:details}
+endsnippet
+
+snippet awf "@Autowired field" !b
+@Autowired
+${3:private} ${1:ClassName} ${2:`!p snip.rv = camelBack(t[1])`};
+endsnippet
+
+snippet pack "Package" !b
+package `!p 
+import re
+packname = path.replace("/", ".")
+packname = re.sub(".*\.(main|test)\.java.", "", packname)
+packname = re.sub("\w+\.java", "", packname)
+packname = re.sub("\.$", "", packname)
+snip.rv += packname
+`;
+endsnippet
+
+snippet logger "Declare Logger" !b
+private static final Logger logger = LoggerFactory.getLogger(`!p snip.rv += snip.basename`.class);
+endsnippet
+
+snippet deb "logger debug message" !b
+logger.debug("${1}"${2});
+endsnippet
+
+snippet err "logger error message" !b
+logger.error("${1}"${2});
+endsnippet
+
+snippet info "logger info message" !b
+logger.info("${1}"${2});
+endsnippet
+
+snippet aslist "Array.asList" !b
+Arrays.asList(${1});
+endsnippet
+
+snippet /* "Comment Block"
+/*
+	${1}
+*/
+endsnippet
+
+snippet col "@Column"
+@Column
+private ${1:String} ${2:name};
+endsnippet
+
+snippet toString "Pojomatic toString method"
+@Override
+public String toString() {
+	return Pojomatic.toString(this);
+}
+endsnippet
+
+snippet pa "Parameter" !i
+${1/\w+\s*/\u$0/} ${1:parameter}
+endsnippet
