@@ -51,7 +51,7 @@ endsnippet
 
 snippet /* "Comment Block"
 /*
-	${1}
+ * ${1}
 */
 endsnippet
 
@@ -67,6 +67,20 @@ public String toString() {
 }
 endsnippet
 
+snippet equals "Pojomatic equals method"
+@Override
+public boolean equals(Object that) {
+	return Pojomatic.equals(this, that);
+}
+endsnippet
+
+snippet "hashCode|hashcode" "Pojomatic hashCode method" r
+@Override
+public int hashCode() {
+	return Pojomatic.hashCode(this);
+}
+endsnippet
+
 snippet pa "Parameter" !i
 ${1/\w+\s*/\u$0/} ${1:parameter}
 endsnippet
@@ -74,4 +88,15 @@ endsnippet
 snippet impstat "Static imports for testing"
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
+endsnippet
+
+snippet { "Close Bracket"
+{
+	${1}
+}
+endsnippet
+
+snippet val "@Value"
+@Value("${$1}")
+private String ${2:name}
 endsnippet
