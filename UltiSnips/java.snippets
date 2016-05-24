@@ -81,6 +81,27 @@ public int hashCode() {
 }
 endsnippet
 
+snippet "pj" "Pojomatic annotation"
+@AutoProperty
+endsnippet
+
+snippet "pjm" "Pojomatic methods"
+@Override
+public String toString() {
+	return Pojomatic.toString(this);
+}
+
+@Override
+public boolean equals(Object that) {
+	return Pojomatic.equals(this, that);
+}
+
+@Override
+public int hashCode() {
+	return Pojomatic.hashCode(this);
+}
+endsnippet
+
 snippet pa "Parameter" !i
 ${1/\w+\s*/\u$0/} ${1:parameter}
 endsnippet
